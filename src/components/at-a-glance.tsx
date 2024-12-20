@@ -9,11 +9,18 @@ const AtAGlance = () => {
       <CardHeader>
         <CardTitle className="text-[#212636] flex items-center justify-between text-[22px] font-medium">
           <span>At a glance</span>
-          <span>7 days</span>
+          <div>
+            <select className="px-4 py-2 bg-white rounded-lg text-sm text-gray-600 border border-gray-200">
+              <option value="7">7 days</option>
+              <option value="14">14 days</option>
+              <option value="30">30 days</option>
+              <option value="90">90 days</option>
+            </select>
+          </div>
         </CardTitle>
       </CardHeader>
       <CardContent className="mt-6">
-        <div className="grid grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {atAGlanceData.map((item, index) => (
             <Card key={index}>
               <CardHeader>

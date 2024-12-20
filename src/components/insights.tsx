@@ -11,12 +11,7 @@ import {
   BarChart,
   Bar,
 } from "recharts";
-import {
-  ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "./ui/chart";
+import { ArrowUpRight } from "lucide-react";
 
 const weeklyData = [
   { day: "Mon", incoming: 33, answered: 28, experts: 8 },
@@ -26,50 +21,46 @@ const weeklyData = [
   { day: "Fri", incoming: 43, answered: 34, experts: 9 },
   { day: "Sat", incoming: 48, answered: 35, experts: 8 },
   { day: "Sun", incoming: 52, answered: 37, experts: 8 },
-  { day: "Mon", incoming: 35, answered: 30, experts: 5 },
-  { day: "Mon", incoming: 45, answered: 38, experts: 9 },
-  { day: "Tue", incoming: 47, answered: 40, experts: 3 },
-  { day: "Wed", incoming: 50, answered: 42, experts: 10 },
-  { day: "Thu", incoming: 55, answered: 46, experts: 3 },
-  { day: "Fri", incoming: 52, answered: 44, experts: 10 },
-  { day: "Sat", incoming: 56, answered: 47, experts: 9 },
-  { day: "Sun", incoming: 60, answered: 50, experts: 9 },
 ];
 
-const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
+const forecastStats = [
+  {
+    percentage: 15,
+    description:
+      "forecasted increase in your sales closed by the end of the current month",
+  },
+  {
+    percentage: 20,
+    description:
+      "forecasted increase in consultations by the end of the current month",
+  },
 ];
 
-const chartConfig = {
-  desktop: {
-    label: "Desktop",
-    color: "#CCFBEF",
-  },
-  mobile: {
-    label: "Mobile",
-    color: "#134E48",
-  },
-} satisfies ChartConfig;
+const comparisonData = [
+  { period: "This week", consultations: 20, orders: 15 },
+  { period: "Last week", consultations: 15, orders: 10 },
+];
 
 const Insights = () => {
   return (
-    <>
-      <CardHeader>
-        <CardTitle className="text-[#212636] text-[22px] font-medium">
+    <div className="w-full">
+      <CardHeader className="p-4 sm:p-6">
+        <CardTitle className="text-[#212636] mb-4 sm:mb-6 md:mb-10 text-lg sm:text-xl md:text-2xl font-medium">
           <span>Insights</span>
         </CardTitle>
         <CardContent className="p-0">
-          <div className="grid grid-cols-3 gap-8">
-            <Card className="h-[350px] p-6 col-span-2">
+          <div className="flex flex-col lg:flex-row gap-4 sm:gap-6">
+            {/* Main Chart */}
+            <Card className="h-[300px] sm:h-[350px] p-3 sm:p-6 w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <ComposedChart
                   data={weeklyData}
-                  margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                  margin={{
+                    top: 5,
+                    right: 20,
+                    left: 10,
+                    bottom: 5,
+                  }}
                 >
                   <CartesianGrid
                     strokeDasharray="3 3"
@@ -81,13 +72,20 @@ const Insights = () => {
                     axisLine={false}
                     tickLine={false}
                     dy={10}
-                    tick={{ fill: "#94A3B8", fontSize: 12 }}
+                    tick={{
+                      fill: "#94A3B8",
+                      fontSize: 10,
+                      width: 20,
+                    }}
                   />
                   <YAxis
                     axisLine={false}
                     tickLine={false}
-                    dx={-10}
-                    tick={{ fill: "#94A3B8", fontSize: 12 }}
+                    dx={-5}
+                    tick={{
+                      fill: "#94A3B8",
+                      fontSize: 10,
+                    }}
                     ticks={[10, 20, 30, 40, 50, 60]}
                     domain={[0, 60]}
                     yAxisId="left"
@@ -108,8 +106,11 @@ const Insights = () => {
                     orientation="right"
                     axisLine={false}
                     tickLine={false}
-                    dx={10}
-                    tick={{ fill: "#94A3B8", fontSize: 12 }}
+                    dx={5}
+                    tick={{
+                      fill: "#94A3B8",
+                      fontSize: 10,
+                    }}
                     domain={[0, 20]}
                     tickFormatter={() => "10"}
                     label={{
@@ -128,23 +129,9 @@ const Insights = () => {
                     dataKey="experts"
                     fill="#FEF9C3"
                     yAxisId="right"
-                    barSize={20}
+                    barSize={16}
                     radius={[4, 4, 0, 0]}
                   />
-                  {/* <Bar 
-                dataKey="incoming"
-                fill="#94A3B8"
-                yAxisId="left"
-                barSize={20}
-                radius={[4, 4, 0, 0]}
-              />
-              <Bar
-                dataKey="answered"
-                fill="#15B79E" 
-                yAxisId="left"
-                barSize={20}
-                radius={[4, 4, 0, 0]}
-              /> */}
                   <Line
                     type="monotone"
                     dataKey="incoming"
@@ -165,32 +152,86 @@ const Insights = () => {
                 </ComposedChart>
               </ResponsiveContainer>
             </Card>
-            <Card>
-              <CardHeader className="h-[350px]">
-                <ChartContainer config={chartConfig}>
-                  <BarChart accessibilityLayer data={chartData}>
-                    <CartesianGrid vertical={false} />
-                    <XAxis
-                      dataKey="month"
-                      tickLine={false}
-                      tickMargin={10}
-                      axisLine={false}
-                      tickFormatter={(value) => value.slice(0, 3)}
-                    />
-                    <ChartTooltip
-                      cursor={false}
-                      content={<ChartTooltipContent indicator="dashed" />}
-                    />
-                    <Bar dataKey="desktop" fill="#CCFBEF" radius={4} />
-                    <Bar dataKey="mobile" fill="#134E48" radius={4} />
-                  </BarChart>
-                </ChartContainer>
-              </CardHeader>
-            </Card>
+
+            {/* Side Charts Container */}
+            <div className="flex flex-col sm:flex-row lg:flex-row items-center gap-4 sm:gap-6">
+              {/* Comparison Chart */}
+              <Card className="h-[250px] sm:h-[300px] lg:h-[350px] w-full sm:w-1/2 lg:w-64">
+                <CardHeader className="h-full p-2 sm:p-4">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart
+                      data={comparisonData}
+                      margin={{
+                        top: 5,
+                        right: 20,
+                        left: 0,
+                        bottom: 25,
+                      }}
+                    >
+                      <CartesianGrid
+                        strokeDasharray="3 3"
+                        vertical={false}
+                        stroke="#F1F5F9"
+                        horizontalPoints={comparisonData.map(
+                          (_, index) => index
+                        )}
+                      />
+                      <XAxis
+                        dataKey="period"
+                        axisLine={false}
+                        tickLine={false}
+                        interval={0}
+                        tick={{ fontSize: 10 }}
+                        dy={10}
+                      />
+                      <YAxis
+                        axisLine={false}
+                        tickLine={false}
+                        tick={{ fontSize: 10 }}
+                      />
+                      <Bar
+                        dataKey="consultations"
+                        fill="#CCFBEF"
+                        barSize={20}
+                        radius={[5, 5, 0, 0]}
+                      />
+                      <Bar
+                        dataKey="orders"
+                        fill="#115E59"
+                        barSize={20}
+                        radius={[5, 5, 0, 0]}
+                      />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </CardHeader>
+              </Card>
+
+              {/* Forecast Card */}
+              <Card className="w-full sm:w-1/2 lg:w-64 p-4 sm:p-6 bg-gradient-to-b from-[#15B79F] to-[#0E9382] text-white">
+                <div className="text-white/80 font-medium text-sm sm:text-base mb-4 sm:mb-6">
+                  FORECASTS
+                </div>
+                <div className="space-y-4 sm:space-y-6">
+                  {forecastStats.map((stat, index) => (
+                    <div key={index} className="space-y-1">
+                      <div className="flex items-center gap-2">
+                        <span className="text-2xl sm:text-3xl md:text-4xl font-semibold">
+                          +{stat.percentage}%
+                        </span>
+                        <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                      </div>
+                      <p className="text-white/90 text-sm sm:text-base leading-tight">
+                        {stat.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            </div>
           </div>
         </CardContent>
       </CardHeader>
-    </>
+    </div>
   );
 };
 

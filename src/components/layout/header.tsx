@@ -29,7 +29,7 @@ const headerItems = [
 const Header = () => {
   const [active, setActive] = useState(1);
   return (
-    <div className="py-6 pl-10 border-b fixed left-14 bg-white border-b-[#DCDFE4] w-full h-fit">
+    <div className="py-6 z-50 pl-10 border-b fixed left-14 bg-white border-b-[#DCDFE4] w-full h-fit">
       <div className="flex gap-3 items-center">
         {headerItems.map((item) => (
           <div
