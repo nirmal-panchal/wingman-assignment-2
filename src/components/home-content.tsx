@@ -1,7 +1,5 @@
 import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FaArrowTrendUp } from "react-icons/fa6";
-import { atAGlanceData } from "@/data/data";
+import { Card } from "@/components/ui/card";
 import AtAGlance from "./at-a-glance";
 import Insights from "./insights";
 import OrdersTable from "./orders";

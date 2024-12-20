@@ -9,6 +9,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 
 const orders = [
   {
@@ -95,7 +96,9 @@ const OrdersTable = () => {
                 <TableRow key={order.id} className="hover:bg-gray-50">
                   <TableCell className="py-4">
                     <div className="flex items-center gap-3">
-                      <img
+                      <Image
+                        width={32}
+                        height={32}
                         src={order.product.image}
                         alt="Product"
                         className="w-8 h-8 rounded-lg"
