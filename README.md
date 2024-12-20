@@ -1,36 +1,119 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌟 Wingman Frontend Coding Challenge
 
-## Getting Started
+This project is a submission for the frontend coding challenge assigned by Wingman. Below is an overview of the technologies used and instructions for setting up the project.
 
-First, run the development server:
+---
+
+## 🛠 Tech Stack
+
+### Frameworks and Libraries
+
+- 🚀 **Next.js 15**: For server-rendered React applications and routing.
+- 🛡️ **TypeScript**: For static type-checking and better developer experience.
+- 🎨 **shadcn UI**: For building accessible and customizable components.
+- 📊 **Recharts**: For data visualization and charts.
+- ⚛️ **React 19**: For building the component-based frontend.
+
+### Additional Tools
+
+- 🔧 **ESLint and Prettier**: For code quality and formatting.
+
+---
+
+## ✨ Project Features
+
+- 📱 Fully responsive design implemented based on the Figma prototype.
+- 🧩 Interactive and customizable UI components.
+- 📈 Beautifully rendered charts and graphs for data visualization.
+- 🏗️ Modular and reusable codebase adhering to best practices.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed on your system:
+
+- 🖥️ Node.js (>= 16.x)
+- 📦 npm or Yarn package manager
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone <repository-url>
+   cd <project-directory>
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+### Running the Development Server
+
+Start the development server with the following command:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Building for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Build the production-ready application using:
 
-## Learn More
+```bash
+npm run build
+# or
+yarn build
+```
 
-To learn more about Next.js, take a look at the following resources:
+Preview the production build locally:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run start
+# or
+yarn start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📝 Code Style
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Follow the conventions defined in `.eslintrc` and `.prettierrc`.
+- Commit messages should follow the [Conventional Commits](https://www.conventionalcommits.org/) format.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🤝 Contribution Guidelines
+
+1. Fork the repository and create a new branch for your feature or bug fix.
+2. Run linting and tests before submitting a pull request.
+3. Ensure the code is well-documented and adheres to the project's coding standards.
+
+---
+
+## 🙌 Acknowledgments
+
+- 🎨 [Figma](https://www.figma.com) for the design prototype.
+- 🔥 [Next.js](https://nextjs.org/) for the powerful framework.
+- 📊 [Recharts](https://recharts.org/en-US/) for robust charting tools.
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+---
+
+Feel free to reach out with any questions or suggestions for improvement! 💬
